@@ -1,0 +1,25 @@
+{
+  "name": "ave_tw_bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bot.js",
+  "dependencies": {
+    "googleapis": "^64.0.0",
+    "telegraf": "^3.38.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evagrandet/ave_tw-telegram-bot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/evagrandet/ave_tw-telegram-bot/issues"
+  },
+  "homepage": "https://github.com/evagrandet/ave_tw-telegram-bot#readme"
+}
