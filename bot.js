@@ -20,6 +20,8 @@ bot.on('forward', async ctx =>  {
    //await setData(ctx);
 });
 
+bot.on('pinned_message', async ctx => ctx.reply('гав гав ёпта, хуле так громко'))
+
 const checkForward = (ctx) => {
    if (ctx.message.forward_from.id !== CHAT_WARS_ID) {
       return ctx.reply(`Это не чатворс, что ты несешь`);
@@ -40,7 +42,9 @@ const checkUsers = (ctx) => {
 }
 
 bot.on('message', async ctx =>  {
-   checkUsers(ctx);
+   if (ctx.updateType !== 'pinned_message') {
+      checkUsers(ctx);
+   }
 });
 
 bot.launch();
