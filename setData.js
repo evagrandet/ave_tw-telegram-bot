@@ -22,10 +22,21 @@ const getValuesData = async ( apiClient, range ) => {
    return data.sheets;
 };
 
+const findRowIndex = ( sheet, message ) => {
+   const rowIndex = sheet.data[0].rowData.findIndex( ( item ) => {
+      if (item.values) {
+         item.values.find(obj => +obj.formattedValue === message)
+      }
+   });
+
+   return rowIndex;
+};
+
 const setData = async ( ctx ) => {
    const range = 'купи котам посрать';
    const apiClient = await getApiClient();
    const [sheet] = await getValuesData( apiClient, range );
+   //
    const arrayMsg =  ctx.message.text.split('\n');
    const indexStartList = arrayMsg.findIndex(item => item.startsWith('Твои предложения'));
    const regExp = /\(([^)]+)\)/;
@@ -43,6 +54,9 @@ const setData = async ( ctx ) => {
       }
    }
    console.log(resoursesMap)
+   //
+   const rowIndex = findRowIndex( sheet, ctx.from.id );
+   return ctx.reply(rowIndex)
 };
 
 module.exports = setData;
