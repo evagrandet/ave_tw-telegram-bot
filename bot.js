@@ -6,7 +6,7 @@ const CHAT_WARS_ID = 265204902;
 
 const USERS = [417653081, 593183093];
 
-const setData = require('./setData');
+const model = require('./src/model');
 
 
 
@@ -17,16 +17,16 @@ const setData = require('./setData');
 bot.on('forward', async ctx =>  {
    checkForward(ctx);
    //return ctx.reply(`${ctx.from.id}`);
-   //await setData(ctx);
+   //await model(ctx);
 });
 
-bot.on('pinned_message', async ctx => ctx.reply('гав гав ёпта, хуле так громко'))
+// bot.on('pinned_message', async ctx => ctx.reply('хозяйка?'))
 
 const checkForward = (ctx) => {
    if (ctx.message.forward_from.id !== CHAT_WARS_ID) {
       return ctx.reply(`Это не чатворс, что ты несешь`);
    } else {
-      return setData(ctx);
+      return model(ctx);
    }
 }
 

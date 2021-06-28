@@ -1,5 +1,8 @@
+// Model (модель). Получает данные от контроллера, выполняет необходимые операции и передаёт их в вид.
+
+
 const { google } = require('googleapis');
-const { getAuthClient } = require('./googleAuth');
+const { getAuthClient } = require('./auth');
 
 const getApiClient = async () => {
    const authClient = await getAuthClient();
@@ -32,7 +35,7 @@ const findRowIndex = ( sheet, message ) => {
    return rowIndex;
 };
 
-const setData = async ( ctx ) => {
+const model = async ( ctx ) => {
    const range = 'купи котам посрать';
    const apiClient = await getApiClient();
    const [sheet] = await getValuesData( apiClient, range );
@@ -59,4 +62,4 @@ const setData = async ( ctx ) => {
    return ctx.reply(rowIndex)
 };
 
-module.exports = setData;
+module.exports = model;
